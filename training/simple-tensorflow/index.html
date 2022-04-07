@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/training/simple-tensorflow/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Simple tensorflow - Rāpoi Cluster Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Simple tensorflow";
+        var mkdocs_page_input_path = "training/simple-tensorflow.md";
+        var mkdocs_page_url = "/raapoi-docs/training/simple-tensorflow/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Rāpoi Cluster Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cloud_providers/">Connecting to Cloud Providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/">Using Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../notebooks/">Using Jupyter Notebooks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Rāpoi Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Simple tensorflow</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="simple-tensorflow-example-using-new-module-system">Simple tensorflow example (using new module system)<a class="headerlink" href="#simple-tensorflow-example-using-new-module-system" title="Permanent link">&para;</a></h2>
+<p>In a sensible location create an example python script - this is basically copied verbatim from the tensorflow docs: ps://www.tensorflow.org/tutorials/quickstart/beginner</p>
+<p>example.py</p>
+<pre class="codehilite"><code class="language-python">import tensorflow as tf
+print(&quot;TensorFlow version:&quot;, tf.__version__)
+
+
+# Load and prepare the MNIST dataset. Convert the sample data from integers to floating-point numbers
+mnist = tf.keras.datasets.mnist
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+
+# Build a machine learning model
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(input_shape=(28, 28)),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10)
+])
+
+
+# The model returns a vector of log-odds scores, one for each class
+predictions = model(x_train[:1]).numpy()
+predictions
+
+# The tf.nn.softmax function converts these log odds to probabilities for each class
+
+tf.nn.softmax(predictions).numpy()
+
+# Define a loss function for training.
+loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+
+# This untrained model gives probabilities close to random 
+loss_fn(y_train[:1], predictions).numpy()
+
+# Configure and compile the model using Keras Model.compile
+model.compile(optimizer='adam',
+              loss=loss_fn,
+              metrics=['accuracy'])
+
+# Train and evaluate the model - use Model.fit to adjust parameters and minimize loss
+model.fit(x_train, y_train, epochs=5)
+
+# Check model performance
+model.evaluate(x_test,  y_test, verbose=2)
+
+# Return a probability - wrap the trained model and attach softmax
+probability_model = tf.keras.Sequential([
+  model,
+  tf.keras.layers.Softmax()
+])
+probability_model(x_test[:5])
+</code></pre>
+
+<p>Next create a submission script
+submit.sh</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=tensoflow_test
+#SBATCH -o _test.out
+#SBATCH --time=00:10:00
+#SBATCH --partition=gpu
+#SBATCH --ntasks=6
+#SBATCH --mem=50G
+#SBATCH --gres=gpu:1
+
+# Use the new module system
+module use /home/software/tools/eb_modulefiles/all/Core
+
+#to load tf 2.6.0 you'll first need the compiler set it was built with
+module load foss/2021a
+
+#load tf
+module load TensorFlow/2.6.0-CUDA-11.3.1
+
+# Run the simple tensorflow example - taken from the docs: https://www.tensorflow.org/tutorials/quickstart/beginner
+python example.py
+</code></pre>
+
+<p>Submit your job to the queue and then observe in the queue</p>
+<pre class="codehilite"><code class="language-bash">sbatch submit.sh
+squeue -u &lt;username&gt;
+</code></pre>
+
+<p>Possible errors - Tensorflow jobs on the gpu nodes can be a bit dicey
+I'd suggest always choosing more memory than the GPU has (40GB) the gpu nodes have a lot of memory so I'd suggest asking for 50GB of ram minimum.</p>
+<p>There is also a relationship between cpu's allocated and memory used - the errors are not always obvious.  If you're running into issues try increasing the requested memory or reducing the requested CPUs</p>
+<p>Example errors due to requesting many cpus while requesting only 50GB ram
+Note std::bad_alloc - this suggests a problem allocating memory</p>
+<pre class="codehilite"><code>terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+/var/lib/slurm/slurmd/job1125851/slurm_script: line 21: 46983 Aborted                 (core dumped) python example.py
+</code></pre>
+
+<p>Note this example is also in our example git repo: https://github.com/vuw-research-computing/raapoi-examples</p>
+<p>In the <em>tensorflow-simple</em> directory</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

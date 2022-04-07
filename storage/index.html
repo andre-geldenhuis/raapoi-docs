@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/storage/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Storage and Quotas - Rāpoi Cluster Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Storage and Quotas";
+        var mkdocs_page_input_path = "storage.md";
+        var mkdocs_page_url = "/raapoi-docs/storage/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Storage and Quotas</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#shared-storage">Shared Storage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#per-node-storage">Per Node Storage</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../containers/">Using Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../notebooks/">Using Jupyter Notebooks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Rāpoi Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Documentation &raquo;</li><li>Storage and Quotas</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="storage-and-quotas">Storage and quotas<a class="headerlink" href="#storage-and-quotas" title="Permanent link">&para;</a></h1>
+<h2 id="shared-storage">Shared Storage<a class="headerlink" href="#shared-storage" title="Permanent link">&para;</a></h2>
+<p>Currently users have 3 main storage areas share across every node.  Each node has access to to this storage at all times and data is shared.  Be careful with parallel jobs trying to write to the same filename!</p>
+<ul>
+<li>
+<p><strong>/nfs/home/USERNAME</strong> - This is your Home Directory, each user has a <em>50 GB</em> quota limit. <a href="home/">Home directory tips</a></p>
+</li>
+<li>
+<p><strong>/nfs/scratch/USERNAME</strong> - This is your scratch space, each user has a <em>5 TB</em> quota limit. <a href="scratch/">Scratch directory tips</a></p>
+</li>
+<li>
+<p><strong>/beegfs-volatile/USERNAME</strong> - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. <strong>All data on this storage is periodically deleted</strong> 
+<a href="beegfs/">Beegfs tips</a></p>
+</li>
+</ul>
+<p>Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.</p>
+<p>To view your current quota and usage use the <em>vuw-quota</em> command, for example:</p>
+<pre class="codehilite"><code class="language-bash">&lt;username@raapoi-master:~$ vuw-quota 
+
+User Quotas
+
+                       Storage  Usage (GB)  Quota (GB)     % Used 
+            /nfs/home/&lt;username&gt;      18.32       50.00     36.63%
+
+         /nfs/scratch/&lt;username&gt;       0.00     5000.00      0.00%
+</code></pre>
+
+<h2 id="per-node-storage">Per Node Storage<a class="headerlink" href="#per-node-storage" title="Permanent link">&para;</a></h2>
+<p>Each node has local storage you can use at <code>/tmp</code>.  This storage is <strong>not shared</strong> so a program running on <code>amd01n02</code> will not be able to see data stored on node <code>amd01n04</code>'s <code>/tmp</code> storage.</p>
+<p>On the AMD nodes and GPU nodes this is very fast nvme storage with 1.7TB total space.  On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.</p>
+<p>If you use this storage it is your responsibility to copy data to the <code>/tmp</code> and <strong>clean it up</strong> when your job is done.  For more info see <a href="tmp/">Temp Disk Tips</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../basic_commands/" class="btn btn-neutral float-left" title="Basic Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../partitions/" class="btn btn-neutral float-right" title="Using Partitions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../basic_commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../partitions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

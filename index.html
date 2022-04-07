@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" /><link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Rāpoi Cluster Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/raapoi-docs/";
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Rāpoi Cluster Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="accessing_the_cluster/">Accessing the Cluster</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="basic_commands/">Basic Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="storage/">Storage and Quotas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="partitions/">Using Partitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="environment/">Preparing your Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="running_jobs/">Running Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="parallel_processing/">Parallel Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="managing_jobs/">Managing Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="cloud_providers/">Connecting to Cloud Providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="containers/">Using Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="notebooks/">Using Jupyter Notebooks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="examples/">Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="usersub/">User Submitted Docs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="support/">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Rāpoi Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><img alt="Rapoi_logo" src="img/Raapoi_logo.png" /></p>
+<p>The Rāpoi HPC Cluster (aka raapoi) is a Uni-wide computing
+resource that uses the Slurm resource manager to schedule jobs and reserve
+resources.  Similar to most modern compute clusters, Rāpoi requires you to
+request CPU, Memory and Time for your job.  If you do not request these
+resources, you will be given the minimal defaults, which may not be enough to
+run your job.  The good news about resource reservations is that the resources
+you request are guaranteed to be yours, the bad news is if you request too
+little memory or time, your job may terminate prematurely and if you request too
+few CPUs then your job may run slowly.</p>
+<p>Rāpoi is made up of partitions.  A partition is a set of compute nodes
+(servers) and each partition has its own configuration and hardware profile.
+The partition on which you run your jobs will depend on the type of workflow or
+job you intend to submit.</p>
+<p>The cluster employs the module environment to allow researchers to customise
+their environment with their required applications and languages.  </p>
+<p>The documentation contained in this wiki cover most of what you will need to
+know to start running jobs, and if you need more help, please see the <a href="training/">training</a>
+tutorials with step-by-step instructions for our most popular apps and
+languages. You'll also find some simpler <a href="examples/">examples</a> on this site.</p>
+<p>Something in this documentation not up to date or incorrect?  Feel free to create an <a href="https://github.com/vuw-research-computing/raapoi-docs/issues">issue</a> on the <a href="https://github.com/vuw-research-computing/raapoi-docs">documentation github page</a>.  Once merged, the change will appear on the docs page after the github action has run, which might take a few min.Better yet, submit a pull request :)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="accessing_the_cluster/" class="btn btn-neutral float-right" title="Accessing the Cluster">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="accessing_the_cluster/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.3.0
+Build Date UTC : 2022-04-07 04:34:33.895595+00:00
+-->

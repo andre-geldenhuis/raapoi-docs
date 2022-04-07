@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/storage/tmp/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Tmp - Rāpoi Cluster Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tmp";
+        var mkdocs_page_input_path = "storage/tmp.md";
+        var mkdocs_page_url = "/raapoi-docs/storage/tmp/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Rāpoi Cluster Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Storage and Quotas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cloud_providers/">Connecting to Cloud Providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/">Using Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../notebooks/">Using Jupyter Notebooks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Rāpoi Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Tmp</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="temp-disk-tips">Temp Disk Tips<a class="headerlink" href="#temp-disk-tips" title="Permanent link">&para;</a></h3>
+<p>This storage is very fast on the AMD nodes and GPU nodes.  It is your job to move data to the tmp space and clean it up when done.</p>
+<p>There is very little management of this space and currently it is not visible to slurm for fair use scheduling - in other words someone else might have used up most of the temp space on the node!  This is generally not the case though.</p>
+<p>A rough example of how you could use this in an sbatch script</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#
+#SBATCH --job-name=bash_test
+#
+#SBATCH --partition=quicktest
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --time=10:00
+
+# Do the needed module loading for your use case
+module load etc
+
+#make a temporary directory with your usename so you don't tread on others
+mkdir /tmp/&lt;username&gt;
+
+#Copy dataset from scratch to the local tmp on the node (could also use rsync)
+cp -r /nfs/scratch/&lt;user&gt;/dataset /tmp/&lt;user&gt;/dataset
+
+Process data against /tmp/&lt;user&gt;/dataset
+Lets say the data is output to /tmp/&lt;user&gt;/dataoutput/
+
+# Copy data from output to your scratch - I suggest not overwriting your original dataset!
+cp -r /tmp/&lt;user&gt;/dataoutput/* /nfs/scratch/&lt;user&gt;/dataset/dataoutput/
+
+# Delete the data you copy to and created on tmp
+rm -rf /tmp/&lt;user&gt;  #DANGER!!  
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

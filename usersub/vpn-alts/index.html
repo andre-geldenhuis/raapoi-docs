@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/usersub/vpn-alts/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Vpn alts - Rāpoi Cluster Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Vpn alts";
+        var mkdocs_page_input_path = "usersub/vpn-alts.md";
+        var mkdocs_page_url = "/raapoi-docs/usersub/vpn-alts/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Rāpoi Cluster Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cloud_providers/">Connecting to Cloud Providers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/">Using Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../notebooks/">Using Jupyter Notebooks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">User Submitted Docs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Rāpoi Cluster Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Vpn alts</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="vpn-alternatives">VPN alternatives<a class="headerlink" href="#vpn-alternatives" title="Permanent link">&para;</a></h2>
+<p>While the official way to connect to Rāpoi is using the Cisco Anyconnect client, there are some alternatives if that is causing problems.</p>
+<h3 id="ecs-ssh-bastions">ECS ssh bastions<a class="headerlink" href="#ecs-ssh-bastions" title="Permanent link">&para;</a></h3>
+<p>ECS users can come in via the ECS ssh bastions <code>greta-pt.ecs.vuw.ac.nz</code> or <code>barretts.ecs.vuw.ac.nz</code>.  Note that this will only work for users with valid ECS credentials.</p>
+<p>The best way to do this is with a <strong>ProxyJump</strong> either in the ssh command directly, or you can add it to your ssh_config file.</p>
+<p>Directly</p>
+<pre class="codehilite"><code class="language-bash">ssh -J &lt;ecs user&gt;@barretts.ecs.vuw.ac.nz &lt;raapoi user&gt;@raapoi.vuw.ac.nz
+</code></pre>
+
+<p>Or via you ssh_config file</p>
+<pre class="codehilite"><code class="language-bash">Host raapoi
+    HostName raapoi.vuw.ac.nz
+    ProxyJump &lt;ECS user&gt;@greta-pt.ecs.vuw.ac.nz
+    User &lt;Raapoi user&gt;
+</code></pre>
+
+<h3 id="openconnect">OpenConnect<a class="headerlink" href="#openconnect" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.infradead.org/openconnect/">OpenConnect</a> is an opensource implimentation of the Cisco anyconnect clients.  Some users find this easier to use than the official client.</p>
+<p>As all VPN connections currently require 2FA you need to use the <a href="https://github.com/vlaci/openconnect-sso">openconnect-sso python package</a>.  This has only been tested in Linux, it should be possible to make this work in a windows WSL2 terminal as well as in MacOS, but it may require modifications.</p>
+<p>Step 0: make sure you've already setup the Microsoft Authenticator App on your phone or setup SMS as the 2FA method.</p>
+<pre class="codehilite"><code class="language-bash">sudo apt install pipx
+pipx install &quot;openconnect-sso[full]&quot;  # can just use &quot;openconnect-sso&quot; if Qt 5.x already installed
+pipx ensurepath
+</code></pre>
+
+<p>Last line required because of the 'Note' that displays when you run <code>pipx install "openconnect-sso[full]"</code>
+If you have Qt 5.x installed you can skip 2 to 3 and instead: <code>pipx install openconect-sso]</code></p>
+<p>Now you can connect using CLI:</p>
+<pre class="codehilite"><code class="language-bash">openconnect-sso --server vpn.vuw.ac.nz --user &lt;firstname.lastname&gt;@vuw.ac.nz
+</code></pre>
+
+<p>It remembers the last used server so after the first time you can reconnect with just</p>
+<pre class="codehilite"><code class="language-bash">openconnect-sso
+</code></pre>
+
+<p>You then just leave a tab of your command line open on this, and in a different tab connect to Raapoi.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
