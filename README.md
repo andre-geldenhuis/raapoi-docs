@@ -1,3 +1,7 @@
+# Github actions test
+
+go here to see edit results, note you might need an incognito window or cache refresh to see changes rapidly.  https://andre-geldenhuis.github.io/raapoi-docs/
+
 # Rāpoi-docs
 Documentation for the Rāpoi cluster. (Jump straight to step-by-step update workflow <a href="https://github.com/vuw-research-computing/raapoi-docs#workflow-for-updating-docs-locally-via-cli">here</a>).
 
