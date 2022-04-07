@@ -23,4 +23,4 @@ know to start running jobs, and if you need more help, please see the [training]
 tutorials with step-by-step instructions for our most popular apps and
 languages. You'll also find some simpler [examples](examples.md) on this site.
 
-Something in this documentation not up to date or incorrect?  Feel free to create an [issue](https://github.com/vuw-research-computing/raapoi-docs/issues) on the [documentation github page](https://github.com/vuw-research-computing/raapoi-docs).  Better yet, submit a pull request :)
+Something in this documentation not up to date or incorrect?  Feel free to create an [issue](https://github.com/vuw-research-computing/raapoi-docs/issues) on the [documentation github page](https://github.com/vuw-research-computing/raapoi-docs).  Once merged, teh change will appear on the docs page aftr the github action has run, which might take a few min.Better yet, submit a pull request :)
